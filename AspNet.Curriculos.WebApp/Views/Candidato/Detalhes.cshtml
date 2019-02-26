@@ -1,4 +1,6 @@
-﻿@model Candidato
+﻿@using AspNet.Curriculos;
+@model Candidato
+
 @{
     ViewData["Title"] = "Detalhes";
 }
@@ -20,32 +22,27 @@
     <p>Email : @Model.Email</p>
     <!--As redes Sociais podem ser incluidas aqui-->
 
-    <h1>Objetivo</h1>
+    <h2>Objetivo</h2>
     <p>
         @Model.Objetivo
     </p>
-    <h1>Experiencias</h1>
+    <h2>Experiencias</h2>
+        <h3>Cargo</h3>
+        <h3>Empresa</h3>
+        <h3>Descrição</h3>
+
+    <h2>Formaçao</h2>
+        <h3>primeira formação</h3>
+        <h3>Segunda formação</h3>
+
+    <h2>Habilidades</h2>
     <p>
         Lorem Ipsum is simply dummy text of the printing and typesetting industry.
         Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
         when an unknown printer took a galley of type and scrambled it to make a type
         specimen book.
     </p>
-    <h1>Formaçao</h1>
-    <p>
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-        when an unknown printer took a galley of type and scrambled it to make a type
-        specimen book.
-    </p>
-    <h1>Habilidades</h1>
-    <p>
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-        when an unknown printer took a galley of type and scrambled it to make a type
-        specimen book.
-    </p>
-    <h1>Perfil Profissional</h1>
+    <h2>Perfil Profissional</h2>
     <p>
         Lorem Ipsum is simply dummy text of the printing and typesetting industry.
         Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,

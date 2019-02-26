@@ -18,12 +18,17 @@ namespace AspNet.Curriculos.WebApp.Controllers
 
         public IActionResult Detalhes(int Id)
         {
-            Candidato candidato = new Candidato();
-            candidato.Nome = "Rafael";
-            candidato.Email = "g.fael@yahoo.com";
-            candidato.Endereco = "Meier";
+            Candidato candidato1 = new Candidato();
+            var lista = new List<Experiencia>();
 
-            return View(candidato);
+            candidato1.Nome = "Rafael";
+            candidato1.Email = "g.fael@yahoo.com";
+            candidato1.Endereco = "Meier";
+            candidato1.Experiencias = new List<Experiencia>();
+            candidato1.Experiencias.Add(new Experiencia { Empresa = "Órama DTVM", Cargo = "Analista", Descricao = "trabalhei como analista financeiro." });
+       
+
+            return View(candidato1);
         }
 
     }
