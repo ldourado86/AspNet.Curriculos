@@ -1,4 +1,4 @@
-﻿
+﻿@model Candidato
 @{
     ViewData["Title"] = "Detalhes";
 }
@@ -13,19 +13,16 @@
     <title>Detalhes</title>
 </head>
 <body>
-    <h1>Nome do Usuario : </h1>
-    <p>Id do Usuario : </p>
-    <p>Endereço do Usuario : </p>
-    <p>Telefone : (xx) x xxxx-xxxx</p>
-    <p>Email : seu-email@email.com</p>
+    <h1>Nome: @Model.Nome</h1>
+    <p>Id: @Model.Id</p>
+    <p>Endereço: @Model.Endereco </p>
+    <p>Telefone : @Model.Telefone</p>
+    <p>Email : @Model.Email</p>
     <!--As redes Sociais podem ser incluidas aqui-->
 
     <h1>Objetivo</h1>
     <p>
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-        when an unknown printer took a galley of type and scrambled it to make a type
-        specimen book.
+        @Model.Objetivo
     </p>
     <h1>Experiencias</h1>
     <p>

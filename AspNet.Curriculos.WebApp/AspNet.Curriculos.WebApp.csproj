@@ -20,4 +20,8 @@
     <Folder Include="Views\Shared\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\AspNet.Curriculos.Modelos\AspNet.Curriculos.Modelos.csproj" />
+  </ItemGroup>
+
 </Project>
