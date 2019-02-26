@@ -12,5 +12,11 @@ namespace AspNet.Curriculos.WebApp.Controllers
         {
             return View();
         }
+
+        public IActionResult Detalhes(int Id)
+        {
+            return View();
+        }
+
     }
 }
