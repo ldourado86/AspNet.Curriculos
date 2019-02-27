@@ -11,7 +11,7 @@ namespace AspNet.Curriculos.Modelos
         public String Email { get; set; }
         public String Telefone { get; set; }
         public String Objetivo { get; set; }
-        public List<Experiencia> Experiencias { get; set; }
+        public IList<Experiencia> Experiencias { get; set; }
 
     }
 }

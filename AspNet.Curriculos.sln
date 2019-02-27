@@ -5,7 +5,9 @@ VisualStudioVersion = 15.0.28010.2041
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNet.Curriculos.WebApp", "AspNet.Curriculos.WebApp\AspNet.Curriculos.WebApp.csproj", "{D22195FC-3EAD-4822-B96D-FAC3EB1A5053}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNet.Curriculos.Modelos", "AspNet.Curriculos.Modelos\AspNet.Curriculos.Modelos.csproj", "{0DC79984-8092-4C51-863A-8326B1C22691}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNet.Curriculos.Modelos", "AspNet.Curriculos.Modelos\AspNet.Curriculos.Modelos.csproj", "{0DC79984-8092-4C51-863A-8326B1C22691}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNet.Curriculos.Dados", "AspNet.Curriculos.Dados\AspNet.Curriculos.Dados.csproj", "{A142F83F-16FF-435D-9D31-1E39C03044F1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{0DC79984-8092-4C51-863A-8326B1C22691}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0DC79984-8092-4C51-863A-8326B1C22691}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0DC79984-8092-4C51-863A-8326B1C22691}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A142F83F-16FF-435D-9D31-1E39C03044F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A142F83F-16FF-435D-9D31-1E39C03044F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A142F83F-16FF-435D-9D31-1E39C03044F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A142F83F-16FF-435D-9D31-1E39C03044F1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -21,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\AspNet.Curriculos.Dados\AspNet.Curriculos.Dados.csproj" />
     <ProjectReference Include="..\AspNet.Curriculos.Modelos\AspNet.Curriculos.Modelos.csproj" />
   </ItemGroup>
 
