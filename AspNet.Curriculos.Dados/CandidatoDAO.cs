@@ -21,6 +21,9 @@ namespace AspNet.Curriculos.Dados
             return context.Candidatos.Include(c => c.Experiencias).FirstOrDefault(c => c.Id == id);
         }
 
-
+        public IEnumerable<Candidato> ListarCandidatos()
+        {
+            return context.Candidatos;
+        }
     }
 }

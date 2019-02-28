@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@model IEnumerable<Candidato>
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
@@ -9,12 +10,12 @@
 </head>
 <body>
     <ul>
-        <li><a asp-action="Detalhes" asp-route-id="1">Leandro</a></li>
-        <li><a asp-action="Detalhes" asp-route-id="2">Rafael</a></li>
-        <li><a asp-action="Detalhes" asp-route-id="3">Daniel</a></li>
-        <li><a asp-action="Detalhes" asp-route-id="4">Pedro</a></li>
-        <li><a asp-action="Detalhes" asp-route-id="5">João</a></li>
-        <li><a asp-action="Detalhes" asp-route-id="6">Maria</a></li>
+        @foreach (var item in Model)
+        {
+            <li><a asp-action="Detalhes" asp-route-id="@item.Id">@item.Nome</a></li>
+        }
+        
+      
     </ul>
 
 </body>

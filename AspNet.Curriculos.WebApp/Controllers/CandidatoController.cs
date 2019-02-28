@@ -19,7 +19,8 @@ namespace AspNet.Curriculos.WebApp.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            IEnumerable<Candidato> lista = dao.ListarCandidatos();
+            return View(lista);
         }
 
         public IActionResult Detalhes(int id)
