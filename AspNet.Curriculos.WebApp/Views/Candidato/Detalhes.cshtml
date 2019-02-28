@@ -11,43 +11,67 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="Detalhes.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/estilo.css">
     <title>Detalhes</title>
 </head>
 <body>
-    <h1>Nome: @Model.Nome</h1>
-    <p>Id: @Model.Id</p>
-    <p>Endereço: @Model.Endereco </p>
-    <p>Telefone : @Model.Telefone</p>
-    <p>Email : @Model.Email</p>
-    <!--As redes Sociais podem ser incluidas aqui-->
+    <header class="navegacao">
+        <ul>
+            <li>Home</li>
+            <li>Vagas</li>
+            <li>Notificações</li>
+        </ul>
+    </header>
 
-    <h2>Objetivo</h2>
-    <p>
-        @Model.Objetivo
-    </p>
-    <h2>Experiencias</h2>
-        <h3>Cargo</h3>
-        <h3>Empresa</h3>
-        <h3>Descrição</h3>
+    <section class="container">
+        <div id="candidato">
+            <h1>Nome: @Model.Nome</h1>
+            <p>Endereço: @Model.Endereco </p>
+            <p>Telefone : @Model.Telefone</p>
+            <p>Email : @Model.Email</p>
+        </div>
+        <!--As redes Sociais podem ser incluidas aqui-->
+        <div id="objetivo">
+            <h1>Objetivo</h1>
+            <p>
+                @Model.Objetivo
+            </p>
+        </div>
 
-    <h2>Formaçao</h2>
-        <h3>primeira formação</h3>
-        <h3>Segunda formação</h3>
+        <div id="experiencia">
+            <h1>Experiencias</h1>
+            @foreach (var exp in Model.Experiencias)
+            {
+                <p>@exp.Empresa</p>
+                <p>@exp.Cargo</p>
+                <p>
+                    @exp.Descricao
+                </p>
+            }
+        </div>
 
-    <h2>Habilidades</h2>
-    <p>
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-        when an unknown printer took a galley of type and scrambled it to make a type
-        specimen book.
-    </p>
-    <h2>Perfil Profissional</h2>
-    <p>
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-        when an unknown printer took a galley of type and scrambled it to make a type
-        specimen book.
-    </p>
+        <div id="formacao">
+            <h1>Formaçao</h1>
+            <p>
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                when an unknown printer took a galley of type and scrambled it to make a type
+                specimen book.
+            </p>
+        </div>
+
+        <div id="habilidades">
+            <h1>Habilidades</h1>
+            <p>
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                when an unknown printer took a galley of type and scrambled it to make a type
+                specimen book.
+            </p>
+        </div>
+    </section>
+    <footer>
+
+    </footer>
 </body>
 </html>

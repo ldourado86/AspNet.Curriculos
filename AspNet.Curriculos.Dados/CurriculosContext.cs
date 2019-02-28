@@ -9,6 +9,11 @@ namespace AspNet.Curriculos.Dados
         public DbSet<Candidato> Candidatos { get; set; }
         public DbSet<Experiencia> Experiencias { get; set; }
 
+        public CurriculosContext(DbContextOptions<CurriculosContext> options):base(options)
+        {
+           
+        }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
