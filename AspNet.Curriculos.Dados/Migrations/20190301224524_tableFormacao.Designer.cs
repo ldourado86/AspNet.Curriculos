@@ -4,14 +4,16 @@ using AspNet.Curriculos.Dados;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AspNet.Curriculos.Dados.Migrations
 {
     [DbContext(typeof(CurriculosContext))]
-    partial class CurriculosContextModelSnapshot : ModelSnapshot
+    [Migration("20190301224524_tableFormacao")]
+    partial class tableFormacao
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -94,24 +96,6 @@ namespace AspNet.Curriculos.Dados.Migrations
                     b.ToTable("Formacoes");
                 });
 
-            modelBuilder.Entity("AspNet.Curriculos.Modelos.Habilidade", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("CandidatoId");
-
-                    b.Property<string>("Skill")
-                        .IsRequired();
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CandidatoId");
-
-                    b.ToTable("Habilidades");
-                });
-
             modelBuilder.Entity("AspNet.Curriculos.Modelos.Experiencia", b =>
                 {
                     b.HasOne("AspNet.Curriculos.Modelos.Candidato")
@@ -123,13 +107,6 @@ namespace AspNet.Curriculos.Dados.Migrations
                 {
                     b.HasOne("AspNet.Curriculos.Modelos.Candidato")
                         .WithMany("Formacoes")
-                        .HasForeignKey("CandidatoId");
-                });
-
-            modelBuilder.Entity("AspNet.Curriculos.Modelos.Habilidade", b =>
-                {
-                    b.HasOne("AspNet.Curriculos.Modelos.Candidato")
-                        .WithMany("Habilidades")
                         .HasForeignKey("CandidatoId");
                 });
 #pragma warning restore 612, 618

@@ -18,7 +18,11 @@ namespace AspNet.Curriculos.Dados
 
         public Candidato BuscaPorId(int id)
         {
-            return context.Candidatos.Include(c => c.Experiencias).FirstOrDefault(c => c.Id == id);
+            return context.Candidatos
+                .Include(c => c.Experiencias)
+                .Include(f => f.Formacoes)
+                .Include(h => h.Habilidades)
+                .FirstOrDefault(c => c.Id == id);
         }
 
         public IEnumerable<Candidato> ListarCandidatos()

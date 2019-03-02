@@ -17,6 +17,8 @@ namespace AspNet.Curriculos.Modelos
         [Required]
         public String Objetivo { get; set; }
         public IList<Experiencia> Experiencias { get; set; }
+        public IList<Formacao> Formacoes { get; set; }
+        public IList<Habilidade> Habilidades { get; set; }
 
     }
 }

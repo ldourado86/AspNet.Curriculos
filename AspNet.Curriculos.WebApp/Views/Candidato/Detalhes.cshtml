@@ -1,5 +1,4 @@
-﻿@using AspNet.Curriculos;
-@model Candidato
+﻿@model Candidato
 
 @{
     ViewData["Title"] = "Detalhes";
@@ -39,11 +38,14 @@
         </div>
 
         <div id="experiencia">
-            <h1>Experiencias</h1>
+            <h1>Experiências</h1>
             @foreach (var exp in Model.Experiencias)
             {
+                <p>Empresa</p>
                 <p>@exp.Empresa</p>
+                <p>Cargo</p>
                 <p>@exp.Cargo</p>
+                <p>Descrição</p>
                 <p>
                     @exp.Descricao
                 </p>
@@ -52,21 +54,22 @@
 
         <div id="formacao">
             <h1>Formaçao</h1>
-            <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                when an unknown printer took a galley of type and scrambled it to make a type
-                specimen book.
-            </p>
+            @foreach (var formacao in Model.Formacoes)
+            {
+                <p>@formacao.Instituicao</p>
+                <p>@formacao.AreaDeEstudo</p>
+                <p>@formacao.DataEntrada</p>
+                <p>@formacao.DataSaida</p>
+            }
         </div>
 
         <div id="habilidades">
             <h1>Habilidades</h1>
             <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                when an unknown printer took a galley of type and scrambled it to make a type
-                specimen book.
+                @foreach (var habilidade in Model.Habilidades)
+                {
+                    <p>@habilidade.Skill</p>
+                }
             </p>
         </div>
     </section>
