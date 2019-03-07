@@ -25,9 +25,59 @@ namespace AspNet.Curriculos.WebApp.Controllers
 
         public IActionResult Detalhes(int id)
         {
-            Candidato candidato1 = dao.BuscaPorId(id);
-            return View(candidato1);
+            Candidato candidato = dao.BuscaPorId(id);
+            return View(candidato);
         }
 
+        [HttpPost]
+        public IActionResult Incluir(Candidato candidato)
+        {
+            if (ModelState.IsValid)
+            {
+                dao.IncluirCandidato(candidato);
+                return RedirectToAction("Index");
+            }
+            return View(candidato);
+        }
+
+        [HttpGet]
+        public IActionResult Incluir()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Atualizar(Candidato candidato)
+        {
+            if (ModelState.IsValid)
+            {
+                dao.AtualizaCandidato(candidato);
+                return RedirectToAction("Index");
+            }
+            return View(candidato);
+        }
+
+        [HttpGet]
+        public IActionResult Atualizar(int id)
+        {
+            Candidato candidato = dao.BuscaPorId(id);
+            if (candidato!=null)
+            {
+                return View(candidato);
+            }
+            return NotFound();
+        }
+
+        [HttpPost]
+        public IActionResult Excluir(int id)
+        {
+            Candidato candidato = dao.BuscaPorId(id);
+            if (candidato!=null)
+            {
+                dao.ExcluirCandidato(candidato);
+                return RedirectToAction("Index");
+            }
+            return NotFound();
+        }
     }
 }

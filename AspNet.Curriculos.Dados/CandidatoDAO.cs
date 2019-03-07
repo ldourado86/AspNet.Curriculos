@@ -16,6 +16,12 @@ namespace AspNet.Curriculos.Dados
             this.context = context;
         }
 
+        public void IncluirCandidato(Candidato candidato)
+        {
+            context.Candidatos.Add(candidato);
+            context.SaveChanges();
+        }
+
         public Candidato BuscaPorId(int id)
         {
             return context.Candidatos
@@ -23,6 +29,18 @@ namespace AspNet.Curriculos.Dados
                 .Include(c => c.Formacoes)
                 .Include(c => c.Habilidades)
                 .FirstOrDefault(c => c.Id == id);
+        }
+
+        public void AtualizaCandidato(Candidato candidato)
+        {
+            context.Candidatos.Update(candidato);
+            context.SaveChanges();
+        }
+
+        public void ExcluirCandidato(Candidato candidato)
+        {
+            context.Candidatos.Remove(candidato);
+            context.SaveChanges();
         }
 
         public IEnumerable<Candidato> ListarCandidatos()

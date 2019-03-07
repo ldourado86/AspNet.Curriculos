@@ -23,6 +23,11 @@
     </header>
 
     <section class="container">
+        <a asp-action="Atualizar" asp-route-id="@Model.Id">Editar</a>
+        <form asp-action="Excluir">
+            <input type="hidden" asp-for="Id"/>
+            <button>Excluir</button>
+        </form>
         <div id="candidato">
             <h1>Nome: @Model.Nome</h1>
             <p>Endereço: @Model.Endereco </p>
@@ -68,11 +73,11 @@
             <p>
                 @foreach (var habilidade in Model.Habilidades)
                 {
-                    <p>@habilidade.Skill</p>
-                }
-            </p>
-        </div>
-    </section>
+                <p>@habilidade.Skill</p>
+            }
+                </p>
+            </div>
+        </section>
     <footer>
 
     </footer>

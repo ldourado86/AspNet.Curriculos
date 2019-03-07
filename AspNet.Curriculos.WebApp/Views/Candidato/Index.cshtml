@@ -9,13 +9,16 @@
     <link rel="stylesheet" href="_css/estilo.css">
 </head>
 <body>
-    <ul>
+    <a asp-action="Incluir">Adicionar</a>
+    <table>
         @foreach (var item in Model)
         {
-            <li><a asp-action="Detalhes" asp-route-id="@item.Id">@item.Nome</a></li>
+            <tr>
+                <td><a asp-action="Detalhes" asp-route-id="@item.Id">@item.Nome</a></td>                
+            </tr>
         }
   
-    </ul>
+    </table>
 
 </body>
 </html>
