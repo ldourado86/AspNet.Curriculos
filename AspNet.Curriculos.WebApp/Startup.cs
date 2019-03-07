@@ -35,6 +35,7 @@ namespace AspNet.Curriculos.WebApp
                 (Opt=> Opt.UseSqlServer("server=(localdb)\\MSSQLLocalDB;Database=DBCurriculos; trusted_connection=true"));
 
             services.AddTransient<CandidatoDAO>();
+            services.AddTransient<UsuarioDAO>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }

@@ -10,6 +10,7 @@ namespace AspNet.Curriculos.Dados
         public DbSet<Experiencia> Experiencias { get; set; }
         public DbSet<Formacao> Formacoes { get; set; }
         public DbSet<Habilidade> Habilidades { get; set; }
+        public DbSet<Usuario> Usuarios { get; set; }
 
         public CurriculosContext(DbContextOptions<CurriculosContext> options):base(options)
         {

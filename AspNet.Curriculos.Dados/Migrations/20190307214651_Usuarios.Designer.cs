@@ -4,14 +4,16 @@ using AspNet.Curriculos.Dados;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AspNet.Curriculos.Dados.Migrations
 {
     [DbContext(typeof(CurriculosContext))]
-    partial class CurriculosContextModelSnapshot : ModelSnapshot
+    [Migration("20190307214651_Usuarios")]
+    partial class Usuarios
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
