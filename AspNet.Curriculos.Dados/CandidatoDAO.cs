@@ -20,8 +20,8 @@ namespace AspNet.Curriculos.Dados
         {
             return context.Candidatos
                 .Include(c => c.Experiencias)
-                .Include(f => f.Formacoes)
-                .Include(h => h.Habilidades)
+                .Include(c => c.Formacoes)
+                .Include(c => c.Habilidades)
                 .FirstOrDefault(c => c.Id == id);
         }
 
