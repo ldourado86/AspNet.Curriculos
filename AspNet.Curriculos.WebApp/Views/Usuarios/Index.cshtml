@@ -10,12 +10,16 @@
 </head>
 
 <body>
-    @foreach (var usuarios in Model)
-    {
-        <tr>
-            <td><a asp-route-id="@usuarios.Id">@usuarios.Email</a></td>
-        </tr>
-    }
+    <table>
+        @foreach (var usuarios in Model)
+        {
+            <tr>
+                <td>@usuarios.Email</td>
+                <td>@usuarios.Senha</td>
+                <td><a asp-action="Excluir" asp-route-id="@usuarios.Id">Excluir</a></td>
+            </tr>
+        }
+    </table>  
 
 </body>
 </html>

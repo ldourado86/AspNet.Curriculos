@@ -22,7 +22,7 @@ namespace AspNet.Curriculos.WebApp.Controllers
             return View(lista);
         }
 
-        public IActionResult IncluirUsuario(Usuario usuario)
+        public IActionResult Incluir(Usuario usuario)
         {
             if (ModelState.IsValid)
             {
@@ -30,6 +30,18 @@ namespace AspNet.Curriculos.WebApp.Controllers
                 return RedirectToAction("Index");
             }
             return View(usuario);
+        }
+
+        public IActionResult Excluir(int id)
+        {
+            Usuario usuario = dao.BuscarPorId(id);
+            if (usuario !=null)
+            {
+                dao.ExcluirUsuario(usuario);
+                return RedirectToAction("Index");
+            }
+
+            return NotFound();
         }
     }
 }
