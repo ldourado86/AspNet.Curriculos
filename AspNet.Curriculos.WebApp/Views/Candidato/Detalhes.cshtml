@@ -10,6 +10,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"> 
     <link rel="stylesheet" href="~/css/estilo.css">
     <title>Detalhes</title>
 </head>
@@ -23,10 +24,10 @@
     </header>
 
     <section class="container">
-        <a asp-action="Atualizar" asp-route-id="@Model.Id">Editar</a>
+        <a class="btn btn-default" asp-action="Atualizar" asp-route-id="@Model.Id">Editar</a>
         <form asp-action="Excluir">
-            <input type="hidden" asp-for="Id"/>
-            <button>Excluir</button>
+            <input type="hidden" asp-for="Id" />
+            <button class="btn btn-danger">Excluir</button>
         </form>
         <div id="candidato">
             <h1>Nome: @Model.Nome</h1>
@@ -44,6 +45,7 @@
 
         <div id="experiencia">
             <h1>Experiências</h1>
+            <button class="btn btn-primary" data-toggle="modal" data-target="#modalExperiencia">Incluir</button>
             @foreach (var exp in Model.Experiencias)
             {
                 <p>Empresa</p>
@@ -78,8 +80,13 @@
                 </p>
             </div>
         </section>
-    <footer>
+        <footer></footer>
 
-    </footer>
-</body>
+        <div class="modal fade" id="modalExperiencia" role="dialog">
+            <partial name="IncluirExperiencia" model="new Experiencia()" />
+        </div>
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    </body>
 </html>
