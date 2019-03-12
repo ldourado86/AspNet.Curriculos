@@ -100,6 +100,53 @@ namespace AspNet.Curriculos.WebApp.Controllers
                 return RedirectToAction("Detalhes", new { id = experiencia.CandidatoId });
             }
             return NotFound();
-        }       
+        }
+
+        public IActionResult IncluirFormacao(Formacao formacao)
+        {
+            if (ModelState.IsValid)
+            {
+                dao.IncluirFormacao(formacao);
+                return RedirectToAction("Detalhes", new { id = formacao.CandidatoId });
+            }
+            return BadRequest();
+        }
+
+        [HttpPost]
+        public IActionResult ExcluirFormacao(int id)
+        {
+            Formacao formacao = dao.BuscarFormacao(id);
+            if (formacao != null)
+            {
+                dao.ExcluirFormacao(formacao);
+                return RedirectToAction("Detalhes", new { id = formacao.CandidatoId });
+            }
+            return NotFound();
+        }
+
+        public IActionResult IncluirHabilidade(Habilidade habilidade)
+        {
+            if (ModelState.IsValid)
+            {
+                dao.IncluirHabilidade(habilidade);
+                return RedirectToAction("Detalhes", new { id = habilidade.CandidatoId });
+            }
+            return BadRequest();
+        }
+
+        [HttpPost]
+        public IActionResult ExcluirHabilidade(int id)
+        {
+            Habilidade habilidade = dao.BuscarHabilidade(id);
+            if (habilidade != null)
+            {
+                dao.ExcluirHabilidade(habilidade);
+                return RedirectToAction("Detalhes", new { id = habilidade.CandidatoId });
+            }
+            return NotFound();
+        }
+
+
+
     }
 }

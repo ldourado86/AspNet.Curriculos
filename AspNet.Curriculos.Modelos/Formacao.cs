@@ -17,7 +17,7 @@ namespace AspNet.Curriculos.Modelos
         [Required]
         public DateTime DataSaida { get; set; }
 
-        public Candidato Candidato { get; set; }
+        public int CandidatoId { get; set; }
 
 
     }

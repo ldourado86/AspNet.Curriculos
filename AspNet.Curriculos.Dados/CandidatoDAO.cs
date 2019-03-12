@@ -65,5 +65,42 @@ namespace AspNet.Curriculos.Dados
             context.Experiencias.Remove(experiencia);
             context.SaveChanges();
         }
+
+        public Formacao BuscarFormacao(int id)
+        {
+            return context.Formacoes
+                .FirstOrDefault(exp => exp.Id == id);
+        }
+
+        public void IncluirFormacao(Formacao formacao)
+        {
+            context.Formacoes.Add(formacao);
+            context.SaveChanges();
+        }
+
+        public void ExcluirFormacao(Formacao formacao)
+        {
+            context.Formacoes.Remove(formacao);
+            context.SaveChanges();
+        }
+
+        public Habilidade BuscarHabilidade(int id)
+        {
+            return context.Habilidades
+                .FirstOrDefault(exp => exp.Id == id);
+        }
+
+        public void IncluirHabilidade(Habilidade habilidade)
+        {
+            context.Habilidades.Add(habilidade);
+            context.SaveChanges();
+        }
+
+        public void ExcluirHabilidade(Habilidade habilidade)
+        {
+            context.Habilidades.Remove(habilidade);
+            context.SaveChanges();
+        }
+
     }
 }

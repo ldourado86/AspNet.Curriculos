@@ -25,7 +25,7 @@
 
     <section class="container">
         <a class="btn btn-default" asp-action="Atualizar" asp-route-id="@Model.Id">Editar</a>
-        
+
         <form asp-action="Excluir">
             <input type="hidden" asp-for="Id" />
             <button class="btn btn-danger">Excluir</button>
@@ -74,7 +74,13 @@
                 <p>@formacao.AreaDeEstudo</p>
                 <p>@formacao.DataEntrada.ToString("dd/MM/yyyy")</p>
                 <p>@formacao.DataSaida.ToString("dd/MM/yyyy")</p>
+
+                <form asp-action="ExcluirFormacao">
+                    <input type="hidden" name="id" value="@formacao.Id" />
+                    <button class="btn btn-danger">Excluir</button>
+                </form>
             }
+
         </div>
 
         <div id="habilidades">
@@ -84,8 +90,13 @@
                 @foreach (var habilidade in Model.Habilidades)
                 {
                 <p>@habilidade.Skill</p>
-            }
-                </p>
+
+                    <form asp-action="ExcluirHabilidade">
+                        <input type="hidden" name="id" value="@habilidade.Id" />
+                        <button class="btn btn-danger">Excluir</button>
+                    </form>
+                }
+            </p>
             </div>
         </section>
         <footer></footer>
@@ -103,6 +114,12 @@
         <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
         <script>
             $('#CandidatoId').val(@Model.Id);
+        </script>
+        <script>
+            $('#FormacaoCandidatoId').val(@Model.Id);
+        </script>
+        <script>
+            $('#HabilidadeCandidatoId').val(@Model.Id);
         </script>
 
     </body>
