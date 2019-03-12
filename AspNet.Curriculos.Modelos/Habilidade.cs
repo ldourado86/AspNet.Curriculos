@@ -10,5 +10,6 @@ namespace AspNet.Curriculos.Modelos
         public int Id { get; set; }
         [Required]
         public String Skill { get; set; }
+        public Candidato Candidato { get; set; }
     }
 }

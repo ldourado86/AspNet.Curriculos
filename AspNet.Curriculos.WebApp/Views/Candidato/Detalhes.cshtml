@@ -25,6 +25,7 @@
 
     <section class="container">
         <a class="btn btn-default" asp-action="Atualizar" asp-route-id="@Model.Id">Editar</a>
+        
         <form asp-action="Excluir">
             <input type="hidden" asp-for="Id" />
             <button class="btn btn-danger">Excluir</button>
@@ -46,6 +47,7 @@
         <div id="experiencia">
             <h1>Experiências</h1>
             <button class="btn btn-primary" data-toggle="modal" data-target="#modalExperiencia">Incluir</button>
+
             @foreach (var exp in Model.Experiencias)
             {
                 <p>Empresa</p>
@@ -55,12 +57,17 @@
                 <p>Descrição</p>
                 <p>
                     @exp.Descricao
-                </p>
+                </p> //tag helper
+                <form asp-action="ExcluirExperiencia">
+                    <input type="hidden" name="id" value="@exp.Id" />
+                    <button class="btn btn-danger">Excluir</button>
+                </form>
             }
         </div>
 
         <div id="formacao">
             <h1>Formaçao</h1>
+            <button class="btn btn-primary" data-toggle="modal" data-target="#modalFormacao">Incluir</button>
             @foreach (var formacao in Model.Formacoes)
             {
                 <p>@formacao.Instituicao</p>
@@ -72,6 +79,7 @@
 
         <div id="habilidades">
             <h1>Habilidades</h1>
+            <button class="btn btn-primary" data-toggle="modal" data-target="#modalHabilidade">Incluir</button>
             <p>
                 @foreach (var habilidade in Model.Habilidades)
                 {
@@ -85,8 +93,17 @@
         <div class="modal fade" id="modalExperiencia" role="dialog">
             <partial name="IncluirExperiencia" model="new Experiencia()" />
         </div>
+        <div class="modal fade" id="modalFormacao" role="dialog">
+            <partial name="IncluirFormacao" model="new Formacao()" />
+        </div>
+        <div class="modal fade" id="modalHabilidade" role="dialog">
+            <partial name="IncluirHabilidade" model="new Habilidade()" />
+        </div>
         <script src="~/lib/jquery/dist/jquery.min.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script>
+            $('#CandidatoId').val(@Model.Id);
+        </script>
 
     </body>
 </html>

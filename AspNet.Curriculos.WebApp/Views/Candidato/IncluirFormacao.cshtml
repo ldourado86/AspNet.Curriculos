@@ -1,0 +1,40 @@
+﻿@model AspNet.Curriculos.Modelos.Formacao
+
+<h4>Formacao</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="IncluirFormacao">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Instituicao" class="control-label"></label>
+                <input asp-for="Instituicao" class="form-control" />
+                <span asp-validation-for="Instituicao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AreaDeEstudo" class="control-label"></label>
+                <input asp-for="AreaDeEstudo" class="form-control" />
+                <span asp-validation-for="AreaDeEstudo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataEntrada" class="control-label"></label>
+                <input asp-for="DataEntrada" class="form-control" />
+                <span asp-validation-for="DataEntrada" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataSaida" class="control-label"></label>
+                <input asp-for="DataSaida" class="form-control" />
+                <span asp-validation-for="DataSaida" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+            <input type="hidden" name="CandidatoId" id="CandidatoId" />
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Detalhes">Back to List</a>
+</div>
+

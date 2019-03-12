@@ -79,5 +79,27 @@ namespace AspNet.Curriculos.WebApp.Controllers
             }
             return NotFound();
         }
+
+        public IActionResult IncluirExperiencia(Experiencia experiencia)
+        {
+            if (ModelState.IsValid)
+            {
+                dao.IncluirExperiencia(experiencia);
+                return RedirectToAction("Detalhes", new { id = experiencia.CandidatoId });
+            }
+            return BadRequest();
+        }
+
+        [HttpPost]
+        public IActionResult ExcluirExperiencia(int id)
+        {
+            Experiencia experiencia = dao.BuscarExperiencia(id);
+            if (experiencia!=null)
+            {
+                dao.ExcluirExperiencia(experiencia);
+                return RedirectToAction("Detalhes", new { id = experiencia.CandidatoId });
+            }
+            return NotFound();
+        }       
     }
 }

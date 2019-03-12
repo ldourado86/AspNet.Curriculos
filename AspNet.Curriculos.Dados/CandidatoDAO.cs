@@ -41,11 +41,29 @@ namespace AspNet.Curriculos.Dados
         {
             context.Candidatos.Remove(candidato);
             context.SaveChanges();
-        }
+        } 
 
         public IEnumerable<Candidato> ListarCandidatos()
         {
             return context.Candidatos;
+        }
+
+        public Experiencia BuscarExperiencia(int id)
+        {
+            return context.Experiencias              
+                .FirstOrDefault(exp => exp.Id == id);
+        }
+
+        public void IncluirExperiencia(Experiencia experiencia)
+        {
+            context.Experiencias.Add(experiencia);
+            context.SaveChanges();
+        }
+
+        public void ExcluirExperiencia(Experiencia experiencia)
+        {
+            context.Experiencias.Remove(experiencia);
+            context.SaveChanges();
         }
     }
 }

@@ -14,6 +14,9 @@ namespace AspNet.Curriculos.Modelos
         public String Cargo { get; set; }
         [Required]
         public String Descricao { get; set; }
+
+        public int CandidatoId { get; set; }
+
     }
 
 }
