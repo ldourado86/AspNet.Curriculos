@@ -1,28 +1,9 @@
 ﻿@model Candidato
 
 @{
+    //Layout = "~/views/shared/_Layout.cshtml"; está na view Start
     ViewData["Title"] = "Detalhes";
 }
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"> 
-    <link rel="stylesheet" href="~/css/estilo.css">
-    <title>Detalhes</title>
-</head>
-<body>
-    <header class="navegacao">
-        <ul>
-            <li>Home</li>
-            <li>Vagas</li>
-            <li>Notificações</li>
-        </ul>
-    </header>
-
     <section class="container">
         <a class="btn btn-default" asp-action="Atualizar" asp-route-id="@Model.Id">Editar</a>
 
@@ -102,21 +83,16 @@
         <footer></footer>
 
         <div class="modal fade" id="modalExperiencia" role="dialog">
-            <partial name="IncluirExperiencia" model="new Experiencia() { CandidatoId = Model.Id }" /> <!--Asp .net-->
+            <partial name="IncluirExperiencia" model="new Experiencia() { CandidatoId = Model.Id }" /> <!--Asp outra maneira de fazer .net-->
         </div>
         <div class="modal fade" id="modalFormacao" role="dialog">
             <partial name="IncluirFormacao" model="new Formacao()" />
         </div>
         <div class="modal fade" id="modalHabilidade" role="dialog">
             <partial name="IncluirHabilidade" model="new Habilidade()" />
-        </div>
-        <script src="~/lib/jquery/dist/jquery.min.js"></script>
-        <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+        </div>        
         <script>
             //$('#CandidatoId').val(@Model.Id);       
             $('#FormacaoCandidatoId').val(@Model.Id);
             $('#HabilidadeCandidatoId').val(@Model.Id);
         </script>
-
-    </body>
-</html>
