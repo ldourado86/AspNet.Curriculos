@@ -102,7 +102,7 @@
         <footer></footer>
 
         <div class="modal fade" id="modalExperiencia" role="dialog">
-            <partial name="IncluirExperiencia" model="new Experiencia()" />
+            <partial name="IncluirExperiencia" model="new Experiencia() { CandidatoId = Model.Id }" /> <!--Asp .net-->
         </div>
         <div class="modal fade" id="modalFormacao" role="dialog">
             <partial name="IncluirFormacao" model="new Formacao()" />
@@ -113,12 +113,8 @@
         <script src="~/lib/jquery/dist/jquery.min.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
         <script>
-            $('#CandidatoId').val(@Model.Id);
-        </script>
-        <script>
+            //$('#CandidatoId').val(@Model.Id);       
             $('#FormacaoCandidatoId').val(@Model.Id);
-        </script>
-        <script>
             $('#HabilidadeCandidatoId').val(@Model.Id);
         </script>
 
