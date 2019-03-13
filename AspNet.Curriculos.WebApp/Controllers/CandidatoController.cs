@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using AspNet.Curriculos.Dados;
 using AspNet.Curriculos.Modelos;
+using AspNet.Curriculos.WebApp.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AspNet.Curriculos.WebApp.Controllers
@@ -30,8 +32,23 @@ namespace AspNet.Curriculos.WebApp.Controllers
         }
 
         [HttpPost]
-        public IActionResult Incluir(Candidato candidato)
+        public IActionResult Incluir(CandidatoForm candidatoForm)
         {
+            byte[] fotoAsByteArray = null;
+            using(BinaryReader stream = new BinaryReader(candidatoForm.Foto.OpenReadStream()))
+            {
+                fotoAsByteArray = stream.ReadBytes((int)candidatoForm.Foto.Length);
+            }
+            var candidato = new Candidato
+            {
+                Nome = candidatoForm.Nome,
+                Email = candidatoForm.Email,
+                Telefone = candidatoForm.Telefone,
+                Endereco = candidatoForm.Endereco,
+                Objetivo = candidatoForm.Objetivo,
+                Foto = fotoAsByteArray
+            };
+            //IFormFile
             if (ModelState.IsValid)
             {
                 dao.IncluirCandidato(candidato);
@@ -146,7 +163,15 @@ namespace AspNet.Curriculos.WebApp.Controllers
             return NotFound();
         }
 
-
+        public IActionResult Foto(int id)
+        {
+            Candidato candidato = dao.BuscaPorId(id);
+            if (candidato!=null)
+            {
+                return File(candidato.Foto, "image/jpeg");
+            }
+            return NotFound();
+        }
 
     }
 }

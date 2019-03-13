@@ -19,6 +19,6 @@ namespace AspNet.Curriculos.Modelos
         public IList<Experiencia> Experiencias { get; set; }
         public IList<Formacao> Formacoes { get; set; }
         public IList<Habilidade> Habilidades { get; set; }
-
+        public byte[] Foto { get; set; }
     }
 }
