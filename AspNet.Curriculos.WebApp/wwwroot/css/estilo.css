@@ -40,10 +40,49 @@
     padding: 10px;
     margin: auto;
     margin-bottom: 30px;
-    text-indent: 20px;
     box-shadow: 1px 0px 1px 0px rgba(0,0,0,.3);
 }
 
+/* Detalhes do Candidato */
+#candidato section {
+    margin-top: 20px;
+}
+
+/* Informaçoes Básicas do Candidato */
+#candidato>header {
+    display: flex;
+}
+
+#info-basica {
+    display: grid;
+    /*fr >> fração da largura*/
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: auto auto auto;
+    grid-column-gap: 10px;
+}
+
+#info-basica img {
+    width: 100%;
+    grid-column: 2 / 2;
+    grid-row: 1 / 4;
+}
+
+#info-basica h1 {
+    grid-column: 1/1;
+    grid-row: 1/1;
+}
+
+#info-basica #contato {
+    grid-column: 1/1;
+    grid-row: 2/2;
+}
+
+#info-basica #objetivo {
+    grid-column: 1/1;
+    grid-row: 3/3;
+}
+    
+/* Experiência*/
 #experiencia {
     border: 1px solid rgba(0,0,0,.3);
     padding: 10px;
@@ -53,3 +92,14 @@
     #experiencia h1 {
         border-bottom: 1px solid rgba(0,0,0,.3);
     }
+
+/* Formação */
+#candidato section>header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#candidato section ul {
+    list-style: none;
+}
