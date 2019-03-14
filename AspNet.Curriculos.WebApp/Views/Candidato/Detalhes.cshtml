@@ -6,47 +6,87 @@
 }
 <section id="candidato" class="container">
     <header>
-        <a class="btn btn-default" asp-action="Atualizar" asp-route-id="@Model.Id">Editar</a>
+        <a class="glyphicon glyphicon-pencil botao-padrao" asp-action="Atualizar" asp-route-id="@Model.Id"></a><!--botao editar-->
 
         <form asp-action="Excluir">
             <input type="hidden" asp-for="Id" />
-            <button class="btn btn-danger">Excluir</button>
+            <button class="glyphicon glyphicon-remove botao-padrao"></button><!--botao excluir-->
         </form>
     </header>
     <section id="info-basica">
-        <img src="/Candidato/Foto/@Model.Id" />
-        <h1>@Model.Nome</h1>
-        <div id="contato">
-            <p>Endereço: @Model.Endereco </p>
-            <p>Telefone : @Model.Telefone</p>
-            <p>Email : @Model.Email</p>
+        <div class="row">
+            <div class="col-xs-6 col-md-3">
+                <a style="border-radius:100px" href="#" class="thumbnail">
+                    <img style="border-radius:100px" src="/Candidato/Foto/@Model.Id" alt="Foto do Candidato">
+                </a>
+            </div>
         </div>
-        <div id="objetivo">
-            <h2>Objetivo</h2>
-            <p>
+        <h1>@Model.Nome</h1>
+        <div class="panel panel-default contato">
+            <div class="panel-heading">
+                <h3 class="panel-title"><strong>Endereço</strong></h3>
+            </div>
+            <div class="panel-body">
+                @Model.Endereco
+            </div>
+
+            <div class="panel-heading">
+                <h3 class="panel-title"><strong>Telefone</strong></h3>
+            </div>
+            <div class="panel-body">
+                @Model.Telefone
+            </div>
+
+            <div class="panel-heading">
+                <h3 class="panel-title"><strong>Email</strong></h3>
+            </div>
+            <div class="panel-body">
+                @Model.Telefone
+            </div>
+            <div class="panel-heading">
+                <h3 class="panel-title"><strong>Objetivo</strong></h3>
+            </div>
+            <div class="panel-body">
                 @Model.Objetivo
-            </p>
+            </div>           
         </div>
     </section>
     <!--As redes Sociais podem ser incluidas aqui-->
 
     <section id="experiencia">
-        <h2>Experiências</h2>
-        <button class="btn btn-primary" data-toggle="modal" data-target="#modalExperiencia">Incluir</button>
-
+        <header>
+            <h2>Experiências</h2>
+            <button class="glyphicon glyphicon-plus botao-padrao" data-toggle="modal" data-target="#modalExperiencia"></button><!--botão add-->
+        </header>
         @foreach (var exp in Model.Experiencias)
         {
-            <p>Empresa</p>
-            <p>@exp.Empresa</p>
-            <p>Cargo</p>
-            <p>@exp.Cargo</p>
-            <p>Descrição</p>
-            <p>
-                @exp.Descricao
-            </p> //tag helper
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Empresa</h3>
+                </div>
+                <div class="panel-body">
+                    @exp.Empresa
+                </div>
+                
+                <div class="panel-heading">
+                    <h3 class="panel-title">Cargo</h3>
+                </div>
+                <div class="panel-body">
+                    @exp.Cargo
+                </div>
+                
+                <div class="panel-heading">
+                    <h3 class="panel-title">Descrição</h3>
+                </div>
+                <div class="panel-body">
+                    @exp.Descricao
+                </div>
+            </div>      
+
             <form asp-action="ExcluirExperiencia">
                 <input type="hidden" name="id" value="@exp.Id" />
-                <button class="btn btn-danger">Excluir</button>
+                <button class="glyphicon glyphicon-remove botao-padrao"></button><!--botão excluir-->
             </form>
         }
     </section>
@@ -54,44 +94,62 @@
     <section id="formacao">
         <header>
             <h2>Formação</h2>
-            <button class="btn btn-primary" data-toggle="modal" data-target="#modalFormacao">Incluir</button>
+            <button class="glyphicon glyphicon-plus botao-padrao " data-toggle="modal" data-target="#modalFormacao"></button>
         </header>
-        <ul>
-            @foreach (var formacao in Model.Formacoes)
-            {
-            <li>
-                <h3>@formacao.Instituicao</h3>
-                <p>@formacao.AreaDeEstudo</p>
-                <p>
-                    @formacao.DataEntrada.ToString("dd/MM/yyyy") a 
-                    @formacao.DataSaida.ToString("dd/MM/yyyy")
-                </p>
+        
+        @foreach (var formacao in Model.Formacoes)
+        {
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Área</h3>
+            </div>
+            <div class="panel-body">
+                @formacao.AreaDeEstudo
+            </div>
 
-                <form asp-action="ExcluirFormacao">
-                    <input type="hidden" name="id" value="@formacao.Id" />
-                    <button class="btn btn-danger">Excluir</button>
-                </form>
-            </li>
-            }
-        </ul>
+            <div class="panel-heading">
+                <h3 class="panel-title">Instituição</h3>
+            </div>
+            <div class="panel-body">
+                @formacao.Instituicao
+            </div>
 
+            <div class="panel-body">
+               de @formacao.DataEntrada.ToString("dd/MM/yyyy") a
+                @formacao.DataSaida.ToString("dd/MM/yyyy")
+            </div>
+
+        </div>                                                            
+        <form asp-action="ExcluirFormacao">
+            <input type="hidden" name="id" value="@formacao.Id" />
+            <button class="glyphicon glyphicon-remove botao-padrao"></button>
+        </form>
+                    
+            }      
     </section>
 
     <section id="habilidades">
-        <h2>Habilidades</h2>
-        <button class="btn btn-primary" data-toggle="modal" data-target="#modalHabilidade">Incluir</button>
-        <p>
+        <header>
+            <h2>Habilidades</h2>
+            <button class="glyphicon glyphicon-plus botao-padrao" data-toggle="modal" data-target="#modalHabilidade"></button>
+        </header>
+        
             @foreach (var habilidade in Model.Habilidades)
             {
-            <p>@habilidade.Skill</p>
+            <div class="panel panel-default" style="display:inline-block">
+                <div class="panel-heading">
+                    <div class="panel-body">
+                        @habilidade.Skill
+                        <form asp-action="ExcluirHabilidade" style="display:inline-block">
+                            <input type="hidden" name="id" value="@habilidade.Id" />
+                            <button class="glyphicon glyphicon-remove botao-padrao"></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
 
-            <form asp-action="ExcluirHabilidade">
-                <input type="hidden" name="id" value="@habilidade.Id" />
-                <button class="btn btn-danger">Excluir</button>
-            </form>
-        }
-            </p>
-        </section>
+            
+            }                 
     </section>
     <footer></footer>
 
@@ -104,6 +162,7 @@
     <div class="modal fade" id="modalHabilidade" role="dialog">
         <partial name="IncluirHabilidade" model="new Habilidade()" />
     </div>
+</section>
    
  @section Scripts{
         <script>
