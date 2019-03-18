@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Candidato>
+﻿@model ListaPaginada<Candidato>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -9,9 +9,10 @@
     <link rel="stylesheet" href="_css/estilo.css">
 </head>
 <body>
+    
     <a asp-action="Incluir">Adicionar</a>
     <table>
-        @foreach (var item in Model)
+        @foreach (var item in Model.Itens)
         {
             <tr>
                 <td><a asp-action="Detalhes" asp-route-id="@item.Id">@item.Nome</a></td>                
@@ -19,6 +20,12 @@
         }
   
     </table>
+    @if(Model.Pagina.PaginaAnterior >0)
+    {
+        <a href="/Candidato/Index?pagina=@Model.Pagina.PaginaAnterior&tamanho=@Model.Pagina.TamanhoPagina">
+            Anterior
+        </a>
+    }
 
 </body>
 </html>

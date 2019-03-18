@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using AspNet.Curriculos.Dados;
 using AspNet.Curriculos.Modelos;
 using AspNet.Curriculos.WebApp.Models;
+using AspNet.Curriculos.WebApp.Utils;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AspNet.Curriculos.WebApp.Controllers
@@ -19,9 +20,9 @@ namespace AspNet.Curriculos.WebApp.Controllers
             this.dao = dao;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(Paginacao paginacao)
         {
-            IEnumerable<Candidato> lista = dao.ListarCandidatos();
+            var lista = dao.ListarCandidatos().ToListaPaginada<Candidato>(paginacao);
             return View(lista);
         }
 
