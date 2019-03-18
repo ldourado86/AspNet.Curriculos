@@ -58,7 +58,9 @@ namespace AspNet.Curriculos.WebApp.Utils
             return new ListaPaginada<T>
             {
                 Pagina = paginaInfo,
-                Itens = lista.Skip(paginaInfo.ItensADescartar).Take(paginaInfo.TamanhoPagina)
+                Itens = lista
+                    .Skip(paginaInfo.ItensADescartar)
+                    .Take(paginaInfo.TamanhoPagina)
             };
         }
     }

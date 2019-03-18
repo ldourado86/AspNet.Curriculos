@@ -20,10 +20,16 @@ namespace AspNet.Curriculos.WebApp.Controllers
             this.dao = dao;
         }
 
-        public IActionResult Index(Paginacao paginacao)
+        //Model Binding
+        //  /Candidato/Index?pagina=1&tamanho=25&localizacao=Meier
+        public IActionResult Index(
+            [FromQuery] Paginacao paginacao,
+            [FromQuery] FiltroCandidato filtro)
         {
-            var lista = dao.ListarCandidatos().ToListaPaginada<Candidato>(paginacao);
-            return View(lista);
+            var listaPaginada = dao.ListarCandidatos()
+                .AplicarFiltro(filtro)
+                .ToListaPaginada<Candidato>(paginacao);
+            return View(listaPaginada);
         }
 
         public IActionResult Detalhes(int id)
@@ -36,9 +42,12 @@ namespace AspNet.Curriculos.WebApp.Controllers
         public IActionResult Incluir(CandidatoForm candidatoForm)
         {
             byte[] fotoAsByteArray = null;
-            using(BinaryReader stream = new BinaryReader(candidatoForm.Foto.OpenReadStream()))
+            if (candidatoForm.Foto != null)
             {
-                fotoAsByteArray = stream.ReadBytes((int)candidatoForm.Foto.Length);
+                using (BinaryReader stream = new BinaryReader(candidatoForm.Foto.OpenReadStream()))
+                {
+                    fotoAsByteArray = stream.ReadBytes((int)candidatoForm.Foto.Length);
+                }
             }
             var candidato = new Candidato
             {
@@ -79,7 +88,7 @@ namespace AspNet.Curriculos.WebApp.Controllers
         public IActionResult Atualizar(int id)
         {
             Candidato candidato = dao.BuscaPorId(id);
-            if (candidato!=null)
+            if (candidato != null)
             {
                 return View(candidato);
             }
@@ -90,7 +99,7 @@ namespace AspNet.Curriculos.WebApp.Controllers
         public IActionResult Excluir(int id)
         {
             Candidato candidato = dao.BuscaPorId(id);
-            if (candidato!=null)
+            if (candidato != null)
             {
                 dao.ExcluirCandidato(candidato);
                 return RedirectToAction("Index");
@@ -112,7 +121,7 @@ namespace AspNet.Curriculos.WebApp.Controllers
         public IActionResult ExcluirExperiencia(int id)
         {
             Experiencia experiencia = dao.BuscarExperiencia(id);
-            if (experiencia!=null)
+            if (experiencia != null)
             {
                 dao.ExcluirExperiencia(experiencia);
                 return RedirectToAction("Detalhes", new { id = experiencia.CandidatoId });
@@ -167,7 +176,7 @@ namespace AspNet.Curriculos.WebApp.Controllers
         public IActionResult Foto(int id)
         {
             Candidato candidato = dao.BuscaPorId(id);
-            if (candidato!=null)
+            if (candidato != null)
             {
                 return File(candidato.Foto, "image/jpeg");
             }

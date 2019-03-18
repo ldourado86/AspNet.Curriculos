@@ -45,7 +45,10 @@ namespace AspNet.Curriculos.Dados
 
         public IEnumerable<Candidato> ListarCandidatos()
         {
-            return context.Candidatos;
+            return context.Candidatos
+                .Include(c => c.Habilidades)
+                .Include(c => c.Experiencias)
+                .Include(c => c.Formacoes);
         }
 
         public Experiencia BuscarExperiencia(int id)
